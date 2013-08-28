@@ -1,2 +1,17 @@
-<h1>Page#index</h1>
-<p>Find me in app/views/page/index.html.erb</p>
+<div id="three-column" class="container">
+  <% 3.times do |i| %>
+    <% i = i + 1 %>
+    <div class="tbox<%= i %>">
+      <div class="box-style box-style0<%= i%>">
+        <div class="content">
+          <div class="image">
+            <%= image_tag "img0#{i}.jpg", size: "324x200" %>
+          </div>
+          <h2>Receita <%= i %></h2>
+          <p>Aliquam erat volutpat. Pellentesque tristique ante ut risus. Quisque dictum. Integer nisl risus, sagittis convallis, rutrum id, elementum congue, nibh. </p>
+          <a href="#" class="button">Sabia mais ...</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
