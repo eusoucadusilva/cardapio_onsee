@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class RecipesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
@@ -30,10 +32,15 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
+
+    unless @recipe.user == current_user
+      redirect_to recipes_path, alert: "Você não tem permissão para alterar-lo."
+    end
   end
 
   def create
     @recipe = Recipe.new(params[:recipe])
+    @recipe.user_id = current_user.id
 
     respond_to do |format|
       if @recipe.save
@@ -62,11 +69,15 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
-    @recipe.destroy
 
-    respond_to do |format|
-      format.html { redirect_to recipes_url }
-      format.json { head :no_content }
+    if @recipe.user == current_user
+      @recipe.destroy
+      respond_to do |format|
+        format.html { redirect_to recipes_url }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to recipes_path, alert: "Você não tem permissão para excluí-lo."
     end
   end
 end
