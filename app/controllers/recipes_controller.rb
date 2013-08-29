@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
-  # GET /recipes
-  # GET /recipes.json
+  before_filter :authenticate_user!, except: [:index, :show]
+
   def index
     @recipes = Recipe.all
 
@@ -10,8 +10,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  # GET /recipes/1
-  # GET /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
 
@@ -21,8 +19,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  # GET /recipes/new
-  # GET /recipes/new.json
   def new
     @recipe = Recipe.new
 
@@ -32,19 +28,16 @@ class RecipesController < ApplicationController
     end
   end
 
-  # GET /recipes/1/edit
   def edit
     @recipe = Recipe.find(params[:id])
   end
 
-  # POST /recipes
-  # POST /recipes.json
   def create
     @recipe = Recipe.new(params[:recipe])
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
+        format.html { redirect_to @recipe, notice: 'Receita criada com sucesso.' }
         format.json { render json: @recipe, status: :created, location: @recipe }
       else
         format.html { render action: "new" }
@@ -53,14 +46,12 @@ class RecipesController < ApplicationController
     end
   end
 
-  # PUT /recipes/1
-  # PUT /recipes/1.json
   def update
     @recipe = Recipe.find(params[:id])
 
     respond_to do |format|
       if @recipe.update_attributes(params[:recipe])
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
+        format.html { redirect_to @recipe, notice: 'Receita atualizada com sucesso.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -69,8 +60,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  # DELETE /recipes/1
-  # DELETE /recipes/1.json
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
