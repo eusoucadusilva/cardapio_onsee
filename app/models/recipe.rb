@@ -6,7 +6,7 @@ class Recipe < ActiveRecord::Base
 
   delegate :email, :name, to: :user, allow_nil: true, prefix: true
 
-  validates :title, :description, :avatar, :user, presence: true
+  validates :title, :description, :user, presence: true
 
   scope :three_last, lambda {
     order { created_at.desc }.limit(3)
