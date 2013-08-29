@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
 
   has_many :recipes
 
-  validates :name, presence: true
+  validates :name, :email, :password, presence: true
 end
