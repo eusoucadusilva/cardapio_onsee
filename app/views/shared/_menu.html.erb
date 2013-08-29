@@ -2,8 +2,7 @@
   <div id="menu" class="container">
     <ul>
       <li><%= link_to 'Início', root_path %></li>
-      <li><%= link_to 'Pratos', recipes_path %></li>
-      <li><%= link_to 'Sobre Nós' %></li>
+      <li><%= link_to 'Receitas', recipes_path %></li>
 
       <% if user_signed_in? %>
         <li><%= link_to "Bem vindo, #{current_user.email}", edit_user_registration_path %></li>
