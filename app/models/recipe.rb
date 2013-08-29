@@ -1,5 +1,6 @@
 class Recipe < ActiveRecord::Base
-  attr_accessible :title, :description, :user
+  attr_accessible :title, :description, :user, :avatar
+  has_attached_file :avatar, styles: { medium: '324x200i', thumb: '100x100' }, default_url: "/images/missing.png"
 
   belongs_to :user
 

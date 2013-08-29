@@ -8,6 +8,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'foreigner'
 gem 'squeel'
+gem 'paperclip', '~> 3.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

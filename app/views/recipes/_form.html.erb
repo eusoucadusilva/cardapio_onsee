@@ -1,7 +1,8 @@
-<%= simple_form_for(@recipe) do |f| %>
+<%= simple_form_for @recipe, html: { multipart: true } do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.file_field :avatar %>
     <%= f.input :title %>
     <%= f.input :description %>
   </div>
