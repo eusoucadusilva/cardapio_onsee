@@ -14,7 +14,13 @@
       <div class="content">
         <h2><%= @recipe.title%></h2>
         <p><%= @recipe.description %></p>
-        <p><%= link_to 'Voltar', :back, class: 'button' %></p>
+        <p>
+        <% if user_signed_in? %>
+          <%= link_to 'Editar', edit_recipe_path(@recipe), class: 'btn btn-primary' %>
+          <%= link_to 'Excluir', @recipe, method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
+        <% end %>
+          <%= link_to 'Voltar', :back, class: 'btn btn-default' %>
+        </p>
       </div>
     </div>
   </div>
