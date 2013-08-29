@@ -1,28 +1,5 @@
 <h2>Receitas</h2>
 
 <%= paginate @recipes %>
-
-<% @recipes.each do |recipe| %>
-  <div id="three-column" class="container">
-    <div class="tbox1">
-      <div class="box-style box-style01">
-        <div class="content">
-          <div class="image">
-            <%= image_tag recipe.avatar.url(:medium) %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="tbox2">
-      <div class="box-style box-style02">
-        <div class="content">
-          <h2><%= recipe.title%></h2>
-          <%= link_to "Sabia mais ...", recipe, class: 'btn btn-default btn-lg' %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
-
+<%= render @recipes %>
 <%= paginate @recipes %>
