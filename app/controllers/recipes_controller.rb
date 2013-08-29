@@ -12,6 +12,15 @@ class RecipesController < ApplicationController
     end
   end
 
+  def my_recipes
+    @recipes = Recipe.my_recipes(current_user.id).page(params[:page]).per(3)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @recipes }
+    end
+  end
+
   def show
     @recipe = Recipe.find(params[:id])
 
