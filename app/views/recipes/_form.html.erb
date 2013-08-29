@@ -2,12 +2,14 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.label :avatar %>
     <%= f.file_field :avatar %>
     <%= f.input :title %>
     <%= f.input :description %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= link_to 'Voltar', recipes_path, class: 'btn btn-default' %>
   </div>
 <% end %>

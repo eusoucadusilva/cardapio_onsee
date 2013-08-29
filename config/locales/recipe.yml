@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      recipe:
+        one: 'Receita'
+        other: 'Receitas'
+    attributes:
+      recipe:
+        title: 'Título'
+        description: 'Descrição'
+        user: 'Autor'
+        avatar: 'Foto'
