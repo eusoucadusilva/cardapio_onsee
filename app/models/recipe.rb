@@ -11,4 +11,10 @@ class Recipe < ActiveRecord::Base
   scope :three_last, lambda {
     order { created_at.desc }.limit(3)
   }
+
+  scope :my_recipes, lambda { |user_id|
+    where { |recipe|
+      recipe.user_id.eq(user_id)
+    }
+  }
 end
