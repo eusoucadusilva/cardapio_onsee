@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.page(params[:page]).per(3)
 
     respond_to do |format|
       format.html # index.html.erb

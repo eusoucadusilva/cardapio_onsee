@@ -1,0 +1,8 @@
+pt-BR:
+  views:
+    pagination:
+      previous: 'Anterior'
+      next: 'Próximo'
+      truncate: '...'
+      first: 'Inicio'
+      last: 'Fim'
